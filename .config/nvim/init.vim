@@ -10,6 +10,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sensible'
 " - Some colorschemes
 Plug 'flazz/vim-colorschemes'
+" - Async lint engine
+Plug 'dense-analysis/ale'
+" - file explorer
+Plug 'scrooloose/nerdtree'
+" - icons
+Plug 'ryanoasis/vim-devicons'
+" ~ emmet-vim
+Plug 'mattn/emmet-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -62,6 +70,8 @@ nnoremap <leader><space> :nohlsearch<CR>
 :nmap <Leader>v :e $MYVIMRC
 " <Leader> is \ by default, so those commands can be invoked by doing \v and \s
 
+" Maps escape to no search highlight
+:nnoremap <esc> :noh<cr><esc>
 
 
 
@@ -69,3 +79,29 @@ nnoremap <leader><space> :nohlsearch<CR>
 "
 " Colorscheme
 colors gruvbox
+
+" Plugins settings
+"
+"
+" nerdtree
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusline = ''
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" ALE
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \}
+
+" Enable completion where available.
+" This setting must be set before ALE is loaded.
+"
+" You should not turn this setting on if you wish to use ALE as a completion
+" source for other completion plugins, like Deoplete.
+let g:ale_completion_enabled = 1
+
