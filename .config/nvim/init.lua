@@ -46,3 +46,6 @@ require 'lazy-bootstrap'
 
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
+
+-- [[General Autocmds]]
+require 'autocmds'

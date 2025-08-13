@@ -9,7 +9,7 @@ return {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
         lualine_c = {'pretty_path'},
-        lualine_x = {'lsp_status', 'encoding', 'fileformat', 'filetype'},
+        lualine_x = {'lsp_status', 'encoding', 'fileformat'}, --'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
       },
