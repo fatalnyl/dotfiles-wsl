@@ -114,17 +114,15 @@ return {
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 
         -- sources for autocompletion
-        sources = {
+        sources = cmp.config.sources({
           {name = 'nvim_lsp'},
-          {name = 'luasnip'}, -- snipets
-          {name = 'buffer'}, -- text in current buffer
-          {name = 'path'} -- file system paths
-        },
+          --{name = 'luasnip'}, -- snipets
+          --{name = 'buffer'}, -- text in current buffer
+          --{name = 'path'} -- file system paths
+        }),
     }
   end
 }
-
-
 
 
 
