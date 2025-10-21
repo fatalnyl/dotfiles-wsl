@@ -134,3 +134,4 @@ export no_proxy=$NO_PROXY
 export PATH="/opt/riscv/bin:$PATH"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/opt/lua-language-server/bin/"
+export PATH="$PATH:/home/doge/.cargo/bin/tree-sitter"
