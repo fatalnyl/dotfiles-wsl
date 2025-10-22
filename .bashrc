@@ -135,3 +135,14 @@ export PATH="/opt/riscv/bin:$PATH"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/opt/lua-language-server/bin/"
 export PATH="$PATH:/home/doge/.cargo/bin/tree-sitter"
+
+# CUSTOM FUNCTIONS
+#
+# yadm wrapper 
+# https://github.com/yadm-dev/yadm/issues/329#issuecomment-855272687
+
+ya() {
+        unignore="$HOME/.config/yadm/unignore" 
+        test -r "$unignore" && cat "$unignore" | envsubst | yadm add --intent-to-add --pathspec-from-file=-
+        test "$#" -eq 0 && yadm status || yadm "$@"
+}
