@@ -3,7 +3,20 @@ return {
   lazy = false,
   branch = 'main',
   build = ':TSUpdate',
-  config = function()
+  main = 'nvim-treesitter.config', -- Sets main module to use for opts
+  opts = {
+    ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+    auto_install = true,
+      highlight = {
+        enable = true,
+        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --  If you are experiencing weird indenting issues, add the language to
+        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = { enable = true, disable = { 'ruby' } },
+  }
+  --[[ config = function()
       -- NOTE: opts won't work properly
       require('nvim-treesitter').setup {
         -- A list of parser names, or "all" (the listed parsers MUST always be installed)
@@ -15,7 +28,7 @@ return {
         -- auto_install = true,
       }
       require('nvim-treesitter').install{"c", "cpp", "lua", "vimdoc", "query", "markdown", "markdown_inline", "python", "systemverilog"}
-  end
+  end ]]
 }
 
 

@@ -119,15 +119,15 @@ fi
 
 
 # PROXY SETTINGS
-
-export HTTP_PROXY=http://proxy-chain.intel.com:911 export HTTPS_PROXY=http://proxy-chain.intel.com:912
-export FTP_PROXY=http://proxy-chain.intel.com:911 export SOCKS_PROXY=http://proxy-us.intel.com:1080
-export NO_PROXY=intel.com,.intel.com,localhost,.local,127.0.0.0
-export http_proxy=$HTTP_PROXY
-export https_proxy=$HTTPS_PROXY
-export ftp_proxy=$FTP_PROXY
-export socks_proxy=$SOCKS_PROXY
-export no_proxy=$NO_PROXY
+# use ~/proxyset.sh
+# export HTTP_PROXY=http://proxy-chain.intel.com:911 export HTTPS_PROXY=http://proxy-chain.intel.com:912
+# export FTP_PROXY=http://proxy-chain.intel.com:911 export SOCKS_PROXY=http://proxy-us.intel.com:1080
+# export NO_PROXY=intel.com,.intel.com,localhost,.local,127.0.0.0
+# export http_proxy=$HTTP_PROXY
+# export https_proxy=$HTTPS_PROXY
+# export ftp_proxy=$FTP_PROXY
+# export socks_proxy=$SOCKS_PROXY
+# export no_proxy=$NO_PROXY
 . "$HOME/.cargo/env"
 
 # PATH

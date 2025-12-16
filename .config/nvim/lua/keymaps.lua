@@ -32,11 +32,48 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- [[ Custom ]] 
---
 
+-- Suggested keymaps https://medium.com/unixification/must-have-neovim-keymaps-51c283394070
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = 'Move selected text UP in visual mode'})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc = 'Move selected text DOWN in visual mode'})
 
+function map(mode, lhs, rhs, opts)
+    local options = { noremap = true, silent = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.keymap.set(mode, lhs, rhs, options)
+end
 
---
+-- These could be replaced by mini.move.
+map("n", "<C-Up>", ":resize -2<CR>", {desc = "Resize window UP"})
+map("n", "<C-Down>", ":resize +2<CR>", {desc = "Resize window DOWN"})
+map("n", "<C-Left>", ":vertical resize -2<CR>", {desc = "Resize window LEFT"})
+map("n", "<C-Right>", ":vertical resize +2<CR>", {desc = "Resize window RIGHT"})
+
+-- terminal
+map("t", "<C-Up>", "<cmd>resize -2<CR>")
+map("t", "<C-Down>", "<cmd>resize +2<CR>")
+map("t", "<C-Left>", "<cmd>vertical resize -2<CR>")
+map("t", "<C-Right>", "<cmd>vertical resize +2<CR>")
+
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+map("n", "<TAB>", ":bn<CR>", {desc = "Next Buffer"})
+map("n", "<S-TAB>", ":bp<CR>", {desc = "Previous Buffer"})
+map("n", "<leader>bd", ":bd<CR>", {desc = "Delete Buffer"}) -- from Doom Emacs
+
+-- Scroll and center
+-- Add buffer=true to avoid conflict. https://github.com/folke/which-key.nvim/issues/839
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Scroll Down', buffer=true, noremap=true})
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = 'Scroll Up' , buffer=true, noremap=true})
+vim.keymap.set("n", "n", "nzzzv", { desc = 'Next Search Result' , buffer=true, noremap=true})
+vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous Search Result' , buffer=true, noremap=true})
+
+-- Keep cursor at the current position when joining lines
+vim.keymap.set("n", "J", "mzJ`z", {desc = "Join lines and keep cursor at current position", noremap=true})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
