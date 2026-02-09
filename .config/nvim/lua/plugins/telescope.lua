@@ -89,6 +89,12 @@ return {
         vim.keymap.set('n', '<leader>sn', function()
           builtin.find_files { cwd = vim.fn.stdpath 'config' }
         end, { desc = '[S]earch [N]eovim files' })
+
+        -- Telescope-file-browser settings
+        local picker = require "telescope".extensions.file_browser
+        vim.keymap.set("n", "<leader>fb", function()
+          picker.file_browser()
+        end, { noremap = true, desc = 'Telescope [F]ile [B]rowser'})
     end
 }
 
