@@ -10,6 +10,25 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 
+# Colors
+
+# if [ -x /usr/bin/dircolors ]; then
+#   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#   export LS_OPTIONS='--color=auto'
+#   alias l='ls $LS_OPTIONS'
+#   alias ll='ls $LS_OPTIONS -l -N -F'
+#   alias ls='ls $LS_OPTIONS -A -N -hF'
+# fi
+
+# alias lsmp3='ls -1 --indicator-style=none *.mp3'
+# alias lsepub='ls -1 -R --indicator-style=none | grep epub'
+export GREP_COLOR="1;31"
+alias grep='grep --color=auto'
+export LESS="-R"
+export GROFF_NO_SGR=1 # required or man() wont display color
+
+# export PAGER="most"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -21,7 +40,52 @@ fi
 
 
 # CUSTOM FUNCTIONS
-#
+# ex - archive extractor
+# usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# Auto-completion
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+  fi
+fi
+
+# Man coloreador - hay que instalar less
+man() {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+    LESS_TERMCAP_md=$(printf "\e[1;31m") \
+    LESS_TERMCAP_me=$(printf "\e[0m") \
+    LESS_TERMCAP_se=$(printf "\e[0m") \
+    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+    LESS_TERMCAP_ue=$(printf "\e[0m") \
+    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    man "$@"
+}
+
 # yadm wrapper 
 # https://github.com/yadm-dev/yadm/issues/329#issuecomment-855272687
 

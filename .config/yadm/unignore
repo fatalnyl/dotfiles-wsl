@@ -4,5 +4,6 @@ $HOME/.config/nvim
 $HOME/.config/tmux
 $HOME/.config/spotify-player
 $HOME/.config/yadm
+$HOME/.config/alacritty
 $HOME/.bashrc
 $HOME/.bash_aliases

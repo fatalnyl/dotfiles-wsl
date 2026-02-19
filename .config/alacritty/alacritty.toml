@@ -1,0 +1,13 @@
+[cursor]
+style = { shape = "Beam", blinking = "Always" }
+blink_interval = 500
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
+size = 12.0
