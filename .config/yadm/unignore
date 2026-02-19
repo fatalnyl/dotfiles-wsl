@@ -1,3 +1,8 @@
-$HOME/.config/
+$HOME/.config/htop
+$HOME/.config/neofetch
+$HOME/.config/nvim
+$HOME/.config/tmux
+$HOME/.config/spotify-player
+$HOME/.config/yadm
 $HOME/.bashrc
 $HOME/.bash_aliases
