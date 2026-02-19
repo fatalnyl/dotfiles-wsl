@@ -20,3 +20,13 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 
+# CUSTOM FUNCTIONS
+#
+# yadm wrapper 
+# https://github.com/yadm-dev/yadm/issues/329#issuecomment-855272687
+
+ya() {
+        unignore="$HOME/.config/yadm/unignore" 
+        test -r "$unignore" && cat "$unignore" | envsubst | yadm add --intent-to-add --pathspec-from-file=-
+        test "$#" -eq 0 && yadm status || yadm "$@"
+}
