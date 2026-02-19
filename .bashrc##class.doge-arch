@@ -1,0 +1,32 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+
+# CUSTOM FUNCTIONS
+#
+# yadm wrapper 
+# https://github.com/yadm-dev/yadm/issues/329#issuecomment-855272687
+
+ya() {
+        unignore="$HOME/.config/yadm/unignore" 
+        test -r "$unignore" && cat "$unignore" | envsubst | yadm add --intent-to-add --pathspec-from-file=-
+        test "$#" -eq 0 && yadm status || yadm "$@"
+}
