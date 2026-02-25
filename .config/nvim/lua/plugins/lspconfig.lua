@@ -49,15 +49,15 @@ vim.lsp.config("*", { capabilities = capabilities })
 
 -- Diagnostic
 vim.diagnostic.config({
+  jump = {float = true},
   virtual_text = {
     -- source = 'if_many',
     source = true,
     spacing = 2,
     prefix = "●",
+    current_line = true
   },
-  virtual_lines = {
-    current_line = true,
-  },
+  virtual_lines = false, -- { current_line = true },
   update_in_insert = false,
   underline = true,
   severity_sort = true,
@@ -78,10 +78,23 @@ vim.diagnostic.config({
   }
 })
 
-vim.keymap.set('n', 'gK', function()
-  local new_config = not vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = 'LSP Toggle diagnostic virtual_lines' })
+-- vim.keymap.set('n', '<leader>gdl', function()
+--   local new_config = not vim.diagnostic.config().virtual_lines
+--   vim.diagnostic.config({ virtual_lines = new_config })
+-- end, { desc = 'LSP: Toggle diagnostic virtual_lines' })
+--
+-- vim.keymap.set('n', '<leader>gdt', function()
+--   local new_config = not vim.diagnostic.config().virtual_text
+--   vim.diagnostic.config({ virtual_text = new_config })
+-- end, { desc = 'LSP: Toggle diagnostics virtual_text' })
+
+vim.keymap.set('n', '<leader>ga', function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = 'LSP: Toggle all diagnostics' })
+
+vim.keymap.set('n', '<leader>gd', function()
+  vim.diagnostic.open_float()
+end, { desc = 'LSP: Show diagnostic in a floating window' })
 
 return {
   "neovim/nvim-lspconfig",

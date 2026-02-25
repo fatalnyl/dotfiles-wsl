@@ -66,10 +66,11 @@ map("n", "<leader>bd", ":bd<CR>", {desc = "Delete Buffer"}) -- from Doom Emacs
 
 -- Scroll and center
 -- Add buffer=true to avoid conflict. https://github.com/folke/which-key.nvim/issues/839
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Scroll Down', buffer=true, noremap=true})
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = 'Scroll Up' , buffer=true, noremap=true})
-vim.keymap.set("n", "n", "nzzzv", { desc = 'Next Search Result' , buffer=true, noremap=true})
-vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous Search Result' , buffer=true, noremap=true})
+-- buffer=true somehow makes the mapping dissapear
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = 'Scroll Down', buffer=true, noremap=true})
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = 'Scroll Up', buffer=true, noremap=true})
+vim.keymap.set("n", "n", "nzzzv", { desc = 'Next Search Result', noremap=true})
+vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous Search Result', noremap=true})
 
 -- Keep cursor at the current position when joining lines
 vim.keymap.set("n", "J", "mzJ`z", {desc = "Join lines and keep cursor at current position", noremap=true})
