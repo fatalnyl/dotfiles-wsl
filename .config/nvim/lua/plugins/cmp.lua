@@ -22,10 +22,10 @@ return {
         --    See the README about individual language/framework/plugin snippets:
         --    https://github.com/rafamadriz/friendly-snippets
         -- {
-        --   'rafamadriz/friendly-snippets',
-        --   config = function()
-        --     require('luasnip.loaders.from_vscode').lazy_load()
-        --   end,
+        'rafamadriz/friendly-snippets',
+           config = function()
+             require('luasnip.loaders.from_vscode').lazy_load()
+           end,
         -- },
       },
     },
@@ -52,6 +52,8 @@ return {
 
       completion = {completeopt = "menu,menuone,noselect"},
 
+      -- requires vim.o.winborder. see :help winborder
+      -- https://github.com/hrsh7th/nvim-cmp/issues/2210
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -110,16 +112,66 @@ return {
         end, { 'i', 's' }),
       },
 
-        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+      -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+      --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 
-        -- sources for autocompletion
-        sources = cmp.config.sources({
-          {name = 'nvim_lsp'},
-          --{name = 'luasnip'}, -- snipets
-          --{name = 'buffer'}, -- text in current buffer
-          --{name = 'path'} -- file system paths
-        }),
+      -- sources for autocompletion
+      sources = cmp.config.sources({
+        {name = 'nvim_lsp'},
+        {name = 'luasnip'}, -- snipets
+        {name = 'nvim_lsp_signature_help'}
+        --{name = 'buffer'}, -- text in current buffer
+        --{name = 'path'} -- file system paths
+      }),
+
+      -- test adding formatting options
+      -- https://vi.stackexchange.com/questions/45240/how-can-i-show-the-source-for-each-completion-in-the-nvim-cmp-popup
+      -- formatting = {
+      --   format = function(entry, vim_item)
+      --     vim_item.menu = entry.source.name
+      --
+      --     -- limit completion width
+      --     -- local MAX_LABEL_WIDTH = 35
+      --     -- local label = vim_item.abbr
+      --     -- local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+      --     -- if truncated_label ~= label then
+      --     --   vim_item.abbr = truncated_label .. '…'
+      --     -- end
+      --
+      --     -- Set the fixed width of the completion menu to 60 characters.
+      --     -- fixed_width = 20
+      --
+      --     -- Set 'fixed_width' to false if not provided.
+      --     fixed_width = fixed_width or false
+      --
+      --     -- Get the completion entry text shown in the completion window.
+      --     local content = vim_item.abbr
+      --
+      --     -- Set the fixed completion window width.
+      --     if fixed_width then
+      --         vim.o.pumwidth = fixed_width
+      --     end
+      --
+      --     -- Get the width of the current window.
+      --     local win_width = vim.api.nvim_win_get_width(0)
+      --
+      --     -- Set the max content width based on either: 'fixed_width'
+      --     -- or a percentage of the window width, in this case 20%.
+      --     -- We subtract 10 from 'fixed_width' to leave room for 'kind' fields.
+      --     local max_content_width = fixed_width and fixed_width - 10 or math.floor(win_width * 0.2)
+      --
+      --     -- Truncate the completion entry text if it's longer than the
+      --     -- max content width. We subtract 3 from the max content width
+      --     -- to account for the "..." that will be appended to it.
+      --     if #content > max_content_width then
+      --         vim_item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 3) .. "..."
+      --     else
+      --         vim_item.abbr = content .. (" "):rep(max_content_width - #content)
+      --     end
+      --     return vim_item
+      --
+      --   end,
+      -- },
     }
   end
 }
