@@ -17,5 +17,10 @@ return {
       desc = "Buffer Local Keymaps (which-key)",
     },
   },
+  config = function ()
+    -- deletes line diangostic keymap conflict
+    -- https://github.com/folke/which-key.nvim/issues/955
+    vim.keymap.del("n", "<C-w><C-d>")
+  end
 }
 -- vim: ts=2 sts=2 sw=2 et

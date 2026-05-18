@@ -92,9 +92,9 @@ vim.keymap.set('n', '<leader>ga', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = 'LSP: Toggle all diagnostics' })
 
-vim.keymap.set('n', '<leader>gd', function()
-  vim.diagnostic.open_float()
-end, { desc = 'LSP: Show diagnostic in a floating window' })
+-- vim.keymap.set('n', '<leader>gd', function()
+--   vim.diagnostic.open_float()
+-- end, { desc = 'LSP: Show diagnostic in a floating window' })
 
 return {
   "neovim/nvim-lspconfig",
