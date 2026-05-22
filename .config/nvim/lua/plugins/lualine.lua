@@ -17,7 +17,7 @@ return {
         theme='gruvbox'
       },
       tabline = {
-        lualine_a = {'buffers'},
+        lualine_a = {{'filename', path = 3}},
         lualine_b = {'branch'},
         lualine_c = {},
         lualine_x = {},

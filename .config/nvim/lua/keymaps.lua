@@ -75,6 +75,9 @@ vim.keymap.set("n", "N", "Nzzzv", { desc = 'Previous Search Result', noremap=tru
 -- Keep cursor at the current position when joining lines
 vim.keymap.set("n", "J", "mzJ`z", {desc = "Join lines and keep cursor at current position", noremap=true})
 
+-- Save quicker
+vim.keymap.set("n", "<leader>w", ":up<CR>", {desc = "Save/Write to File"})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
