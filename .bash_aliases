@@ -15,3 +15,7 @@ alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less``
+
+# Git aliases
+alias gcd = 'cd $(git rev-parse —show-toplevel)' # go to root of git repo
+

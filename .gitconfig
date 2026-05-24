@@ -1,5 +1,23 @@
 [core]
 	editor = nano
 [alias]
-	lga = log --graph --oneline --all --decorate
-	lg = log --graph --all --pretty=format:'%C(bold)%h%Creset -%C(auto)%d%Creset %s %C(green dim)(%cr)%Creset %C(ul)<%an>'
+    # list aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+    # https://old.reddit.com/r/commandline/comments/wf7oju/post_your_favorite_git_aliases/
+    cm = commit -m
+    co = checkout
+    cob = checkout -b
+    # https://gggritso.com/human-git-aliases
+    discard = checkout --
+    uncommit = reset --soft HEAD^
+    unstage = reset HEAD --
+    amend = commit --amend
+    st = status
+    # https://old.reddit.com/r/git/comments/1gw39ou/what_are_some_poweruser_aliases_for_git/#bottom-comments
+    lg = log --color --graph --pretty=color --abbrev-commit
+    lga = log --all --color --graph --pretty=color --abbrev-commit
+    lgu = log --color --graph --pretty=color --abbrev-commit HEAD --not @{u}^@
+    # https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+[pretty]
+    color = tformat:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
