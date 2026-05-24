@@ -16,6 +16,11 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias more=less``
 
+# cd aliases
+alias ..='cd ..'
+alias ..='cd ../..'
+alias .3='cd ../../..'
+
 # Git aliases
 alias gcd='cd "$(git rev-parse --show-toplevel)"' # go to root of git repo
 
