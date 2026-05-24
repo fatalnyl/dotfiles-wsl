@@ -17,5 +17,17 @@ alias free='free -m'                      # show sizes in MB
 alias more=less``
 
 # Git aliases
-alias gcd = 'cd $(git rev-parse —show-toplevel)' # go to root of git repo
+alias gcd='cd "$(git rev-parse --show-toplevel)"' # go to root of git repo
+
+# https://old.reddit.com/r/bash/comments/1eoc5t1/what_are_good_common_aliases_that_you_use_in_bash/lhdbuai/
+function config() {
+  if [ -d "$HOME/.config/$1" ]; then
+    cd "$HOME/.config/$1"
+  elif [ -f "$HOME/.config/$1" ]; then
+    vi "$HOME/.config/$1"
+  else
+    echo "$1 does not exist in the .config directory."
+  fi
+}
+
 
