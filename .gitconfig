@@ -1,23 +1,56 @@
 [core]
 	editor = nano
 [alias]
-    # list aliases
-    la = "!git config -l | grep alias | cut -c 7-"
+    la = "!git config -l | grep alias | cut -c 7-" # list aliases
+    configs=config --global --list
+
     # https://old.reddit.com/r/commandline/comments/wf7oju/post_your_favorite_git_aliases/
     cm = commit -m
+    cmn = commit -m --no-verify # dont run hooks
     co = checkout
     cob = checkout -b
+    st = status 
+
+    # https://old.reddit.com/r/commandline/comments/wf7oju/post_your_favorite_git_aliases/iisudjb/
+    diff-all = !"for name in $(git diff --name-only $1); do git difftool -y $1 $name & done"
+    diff-changes = diff --name-status -r
+    diff-stat = diff --stat --ignore-space-change -r
+    diff-staged = diff --cached
+    diff-upstream = !git fetch origin && git diff master origin/master
+
     # https://gggritso.com/human-git-aliases
-    discard = checkout --
-    uncommit = reset --soft HEAD^
-    unstage = reset HEAD --
+    discard = checkout -- # reverts a specific file
+    uncommit = reset --soft HEAD^ # undos last commit
+    unstage = reset HEAD -- # unstages a specific file
+    branches = branch -a
+    tags = tag
+    stashes = stash list
+    unmerged = diff --name-only --diff-filter=U
+    remotes = remote -v
+
     amend = commit --amend
-    st = status
+    unamend = reset --soft "HEAD@{1}"
+
     # https://old.reddit.com/r/git/comments/1gw39ou/what_are_some_poweruser_aliases_for_git/#bottom-comments
     lg = log --color --graph --pretty=color --abbrev-commit
     lga = log --all --color --graph --pretty=color --abbrev-commit
     lgu = log --color --graph --pretty=color --abbrev-commit HEAD --not @{u}^@
+
     # https://www.durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    # https://www.jessesquires.com/blog/2021/10/24/git-aliases-to-improve-productivity/
+    authors-list = shortlog -e -s -n
+    authors-count = shortlog -s -n
+    # Better nuke
+    nuke = "!sh -c ' \
+        echo \"WARNING: This will delete local commits, changes, and untracked files.\"; \
+        printf \"Continue? (y/N): \"; \
+        read ans; \
+        [ \"$ans\" = \"y\" ] || exit 1; \
+        git fetch --all --prune && \
+        git reset --hard @{u} && \
+        git clean -fd && \
+        git status \
+        '"
 [pretty]
     color = tformat:%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
