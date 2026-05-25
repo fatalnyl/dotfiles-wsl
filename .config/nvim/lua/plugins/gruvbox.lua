@@ -3,7 +3,7 @@ return {
     "ellisonleao/gruvbox.nvim", 
     priority = 1000, 
     config = function ()
-      
+
       -- Default options:
       require("gruvbox").setup({
         terminal_colors = true, -- add neovim terminal colors
@@ -24,7 +24,11 @@ return {
         invert_intend_guides = false,
         inverse = true, -- invert background for search, diffs, statuslines and errors
         contrast = "hard", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
+        palette_overrides = {
+          dark0_hard = "#1b1b1b",
+          dark1 = "#282828",
+          dark2 = "#3b3634",
+        },
         overrides = {},
         dim_inactive = false,
         transparent_mode = false,

@@ -14,10 +14,10 @@ return {
         lualine_z = {'location'}
       },
       options = {
-        theme='gruvbox'
+        theme='gruvbox_dark'
       },
       tabline = {
-        lualine_a = {{'filename', path = 3}},
+        lualine_a = {{'buffers', mode = 2}},
         lualine_b = {'branch'},
         lualine_c = {},
         lualine_x = {},
