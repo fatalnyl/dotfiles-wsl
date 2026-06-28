@@ -38,7 +38,7 @@ fi
 
 # alias lsmp3='ls -1 --indicator-style=none *.mp3'
 # alias lsepub='ls -1 -R --indicator-style=none | grep epub'
-export GREP_COLOR="1;31"
+export GREP_COLOR="mt=1;31"
 alias grep='grep --color=auto'
 export LESS="-R"
 export GROFF_NO_SGR=1 # required or man() wont display color
