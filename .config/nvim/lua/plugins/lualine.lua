@@ -17,7 +17,13 @@ return {
         theme='gruvbox_dark'
       },
       tabline = {
-        lualine_a = {{'buffers', mode = 2}},
+        lualine_a = {
+          {
+            'buffers',
+            show_filename_only = false,
+            mode = 2,
+          }
+        },
         lualine_b = {'branch'},
         lualine_c = {},
         lualine_x = {},

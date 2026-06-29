@@ -88,6 +88,10 @@ vim.diagnostic.config({
 --   vim.diagnostic.config({ virtual_text = new_config })
 -- end, { desc = 'LSP: Toggle diagnostics virtual_text' })
 
+vim.keymap.set("n", "grd", function() vim.lsp.buf.definition() end, {desc = 'LSP: Goto Definition'})
+vim.keymap.set("n", "grD", function() vim.lsp.buf.declaration() end, {desc = 'LSP: Goto Declaration'})
+vim.keymap.set("n", "grt", function() vim.lsp.buf.type_definition() end, {desc = 'LSP: Goto Type Definition'})
+
 vim.keymap.set('n', '<leader>ga', function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = 'LSP: Toggle all diagnostics' })

@@ -1,3 +1,6 @@
+CompileFlags:
+  Add: [-pedantic-errors, Wall -Weffc++ -Wextra -Wconversion -Wsign-conversion]
+
 Diagnostics:
   # Tweak Clang-Tidy checks.
   ClangTidy:
